@@ -1,12 +1,12 @@
 {
     "dependencies": {
         "obs-studio": {
-            "version": "31.1.1",
+            "version": "32.2.2",
             "baseUrl": "https://github.com/obsproject/obs-studio/archive/refs/tags",
             "label": "OBS sources",
             "hashes": {
                 "macos": "39751f067bacc13d44b116c5138491b5f1391f91516d3d590d874edd21292291",
-                "windows-x64": "2c8427c10b55ac6d68008df2e9a3e82f4647aaad18f105e30d4713c2de678ccf"
+                "windows-x64": "f15f001f1fa526405318835f44f9910046502f496ebc3a30d5296a5018b831aa"
             }
         },
         "prebuilt": {
@@ -36,10 +36,10 @@
             "bundleId": "com.example.plugintemplate-for-obs"
         }
     },
-    "name": "plugintemplate-for-obs",
-    "displayName": "Plugin Template for OBS",
+    "name": "studio-no-transition-strip",
+    "displayName": "Studio No Transition Strip",
     "version": "1.0.0",
-    "author": "Your Name Here",
+    "author": "Andrzej",
     "website": "https://example.com",
     "email": "me@example.com"
 }

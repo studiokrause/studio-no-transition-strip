@@ -1,5 +1,5 @@
 /*
-Plugin Name
+Studio No Transition Strip
 Copyright (C) 2026 studiokrause
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -21,24 +21,29 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+#include <obs-module.h>
 #include <plugin-support.h>
 
-const char *PLUGIN_NAME = "@CMAKE_PROJECT_NAME@";
-const char *PLUGIN_VERSION = "@CMAKE_PROJECT_VERSION@";
+#include "studio-strip-manager.hpp"
 
-void obs_log(int log_level, const char *format, ...)
+OBS_DECLARE_MODULE()
+OBS_MODULE_USE_DEFAULT_LOCALE(PLUGIN_NAME, "en-US")
+
+static StudioStripManager *stripManager = nullptr;
+
+bool obs_module_load(void)
 {
-	size_t length = 4 + strlen(PLUGIN_NAME) + strlen(format);
+	obs_log(LOG_INFO, "plugin loaded successfully (version %s)", PLUGIN_VERSION);
 
-	char *template = malloc(length + 1);
+	stripManager = new StudioStripManager();
+	stripManager->init();
+	return true;
+}
 
-	snprintf(template, length, "[%s] %s", PLUGIN_NAME, format);
+void obs_module_unload(void)
+{
+	delete stripManager;
+	stripManager = nullptr;
 
-	va_list(args);
-
-	va_start(args, format);
-	blogva(log_level, template, args);
-	va_end(args);
-
-	free(template);
+	obs_log(LOG_INFO, "plugin unloaded");
 }
